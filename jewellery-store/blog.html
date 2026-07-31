@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurelia Magazine | Luxury Jewellery Inspiration & Guides</title>
+  <meta name="description" content="Read styling guides, GIA diamond buying procedures, jewelry maintenance articles, and design history updates in Aurelia's editorial magazine.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body class="page-fade-in">
+
+  <!-- Navigation -->
+    <!-- Sticky Luxury Navigation -->
+  <header class="sticky-header">
+    <div class="navbar-container">
+      <!-- Left side: Hamburger + Logo -->
+      <div class="nav-brand-wrapper d-flex align-items-center">
+        <button class="hamburger-menu me-3">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="index.html" class="brand-logo mb-0">Aurelia</a>
+      </div>
+
+      <!-- Center side: Links -->
+      <div class="nav-links-wrapper d-none d-lg-block">
+        <ul class="nav-links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="shop.html" >Shop</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="faq.html" >FAQ</a></li>
+          <li><a href="about.html" >About</a></li>
+          <li><a href="contact.html" >Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right side: Actions -->
+      <div class="nav-actions">
+        <button class="nav-btn search-trigger" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="wishlist.html" class="nav-btn " aria-label="Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-count wishlist-count-badge">0</span>
+        </a>
+        <button class="nav-btn cart-trigger" aria-label="Shopping Cart">
+          <i class="bi bi-bag"></i>
+          <span class="badge-count cart-count-badge">0</span>
+        </button>
+        <a href="login.html" class="nav-btn" aria-label="User Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main style="margin-top: 80px;">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container gsap-fade-up">
+        <h1>Aurelia Magazine</h1>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Blog Editorial</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="section-padding">
+      <div class="container">
+        
+        <!-- Featured Post -->
+        <div class="row g-5 mb-5 align-items-center gsap-fade-up">
+          <div class="col-lg-7">
+            <a href="blog-details.html" class="reveal-img-container">
+              <img src="assets/images/blog/diamond-guide.jpg" alt="Diamond Guide Feature" class="img-fluid border w-100" style="max-height: 450px; object-fit: cover;">
+            </a>
+          </div>
+          <div class="col-lg-5">
+            <span class="text-gold text-uppercase font-pricing mb-2 d-block" style="letter-spacing: 0.15em; font-size: 0.8rem;">Education & Quality</span>
+            <h2 class="font-editorial display-5 mb-3"><a href="blog-details.html">The GIA Diamond Selection Guide: The 4Cs Decoded</a></h2>
+            <p class="text-muted mb-4">Navigating the nuances of Carat weight, Cut grades, Color classifications, and Clarity signatures before selecting an engagement ring. Learn details from our master gemologists.</p>
+            <div class="d-flex align-items-center gap-3 mb-4 text-muted" style="font-size: 0.85rem;">
+              <span>By Client Advisors</span>
+              <span>â€¢</span>
+              <span>8 Min Read</span>
+              <span>â€¢</span>
+              <span>July 2026</span>
+            </div>
+            <a href="blog-details.html" class="btn btn-luxury">Read Full Editorial</a>
+          </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Grid of articles -->
+        <div class="row g-4">
+          <!-- Article 1 -->
+          <div class="col-md-6 col-lg-4 gsap-fade-up">
+            <div class="product-card" style="border: none;">
+              <a href="blog-details.html" class="product-image-container mb-3" style="padding-bottom: 65%;">
+                <img src="assets/images/blog/jewelry-care.jpg" alt="Jewelry Maintenance Tips" class="product-image">
+              </a>
+              <div class="product-info p-4 text-start">
+                <span class="text-bronze text-uppercase font-pricing mb-2 d-block" style="font-size: 0.75rem; letter-spacing: 0.1em;">Maintenance</span>
+                <h4 class="font-editorial fs-3 mb-2"><a href="blog-details.html">Caring For Your Heirloom: Precious Gem Cleaning</a></h4>
+                <p class="text-muted mb-3" style="font-size: 0.85rem;">How to keep your sapphire, emerald, and diamond settings free of oil and dust without compromising soft metal integrity.</p>
+                <div class="d-flex justify-content-between align-items-center font-pricing text-muted" style="font-size: 0.75rem;">
+                  <span>5 Min Read</span>
+                  <span>June 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Article 2 -->
+          <div class="col-md-6 col-lg-4 gsap-fade-up">
+            <div class="product-card" style="border: none;">
+              <a href="blog-details.html" class="product-image-container mb-3" style="padding-bottom: 65%;">
+                <img src="assets/images/blog/trends-2026.jpg" alt="Autumn Lookbook" class="product-image">
+              </a>
+              <div class="product-info p-4 text-start">
+                <span class="text-bronze text-uppercase font-pricing mb-2 d-block" style="font-size: 0.75rem; letter-spacing: 0.1em;">Style Trends</span>
+                <h4 class="font-editorial fs-3 mb-2"><a href="blog-details.html">Baroque Pearls & Asymmetry: Autumn Trends</a></h4>
+                <p class="text-muted mb-3" style="font-size: 0.85rem;">Exploring the return of natural organic textures, drop silhouettes and heavy layered metal designs this harvest season.</p>
+                <div class="d-flex justify-content-between align-items-center font-pricing text-muted" style="font-size: 0.75rem;">
+                  <span>6 Min Read</span>
+                  <span>May 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Article 3 -->
+          <div class="col-md-6 col-lg-4 gsap-fade-up">
+            <div class="product-card" style="border: none;">
+              <a href="blog-details.html" class="product-image-container mb-3" style="padding-bottom: 65%;">
+                <img src="assets/images/collections/bespoke.jpg" alt="Behind the design" class="product-image">
+              </a>
+              <div class="product-info p-4 text-start">
+                <span class="text-bronze text-uppercase font-pricing mb-2 d-block" style="font-size: 0.75rem; letter-spacing: 0.1em;">Atelier Heritage</span>
+                <h4 class="font-editorial fs-3 mb-2"><a href="blog-details.html">The Art of Filigree and Micro-Claw Settings</a></h4>
+                <p class="text-muted mb-3" style="font-size: 0.85rem;">A deep dive into how Aurelia artisans utilize 30x microscopes to hand-secure brilliant pavé shanks on ring bands.</p>
+                <div class="d-flex justify-content-between align-items-center font-pricing text-muted" style="font-size: 0.75rem;">
+                  <span>9 Min Read</span>
+                  <span>April 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-logo">Aurelia</div>
+                    <p class="text-muted pr-4">Refining high-luxury jewelry since 1894. Providing certified diamond rings, precious stones, and heirloom-quality craftsmanship.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Collections</h5>
+          <ul class="footer-links">
+            <li><a href="shop-grid.html?category=engagement">Engagement Rings</a></li>
+            <li><a href="shop-grid.html?category=wedding">Wedding Bands</a></li>
+            <li><a href="shop-grid.html?category=necklaces">Precious Pendants</a></li>
+            <li><a href="shop-grid.html?category=earrings">Diamond Earrings</a></li>
+            <li><a href="shop-grid.html?category=watches">Luxury Chronographs</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Customer Care</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Book Appointment</a></li>
+            <li><a href="about.html">Heritage Story</a></li>
+            <li><a href="shop.html">Certified Diamonds</a></li>
+            <li><a href="contact.html">Boutique Locations</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Boutique Consult</h5>
+          <p class="text-muted">A client advisor is available for virtual or private in-store styling appointments.</p>
+          <a href="contact.html" class="btn btn-luxury btn-luxury-gold w-100 text-center py-2" style="font-size: 0.75rem;">Schedule Consultation</a>
+        </div>
+      </div>
+      <hr class="my-5">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-muted" style="font-size: 0.8rem;">
+        <p class="mb-0">&copy; 2026 Aurelia Fine Jewellery. All Rights Reserved. Crafted for luxury commerce.</p>
+        <div class="d-flex gap-4 mt-3 mt-md-0">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">GIA Authenticity</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawer Overlay & Drawers -->
+  <div class="drawer-overlay"></div>
+
+  <!-- Search Drawer -->
+  <div class="side-drawer" id="search-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Search Collections</h5>
+      <button class="close-drawer-btn" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <form action="shop-grid.html" method="GET">
+        <div class="input-group">
+          <input type="text" class="form-control newsletter-input" placeholder="Search diamonds, rings..." name="search" required>
+          <button class="btn btn-luxury-solid px-3" type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mini Cart Drawer -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Your Shopping Bag</h5>
+      <button class="close-drawer-btn" aria-label="Close cart"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content mini-cart-items-wrapper"></div>
+    <div class="side-drawer-footer">
+      <div class="d-flex justify-content-between mb-3">
+        <span class="text-uppercase font-pricing" style="font-size: 0.85rem;">Subtotal</span>
+        <span class="font-pricing mini-cart-total-price fw-bold">$0.00</span>
+      </div>
+      <a href="cart.html" class="btn btn-luxury w-100 mb-2 text-center d-block">View Shopping Bag</a>
+      <a href="checkout.html" class="btn btn-luxury-solid w-100 text-center d-block mini-cart-checkout-btn">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="side-drawer side-drawer-left" id="mobile-menu-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Aurelia Menu</h5>
+      <button class="close-drawer-btn" aria-label="Close mobile menu"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <ul class="nav-links flex-column gap-3 fs-5" style="display: flex;">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="shop.html" >Shop</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="faq.html" >FAQ</a></li>
+        <li><a href="about.html" >About Us</a></li>
+        <li><a href="contact.html" >Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

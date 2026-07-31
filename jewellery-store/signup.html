@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Registry | Aurelia Fine Jewellery</title>
+  <meta name="description" content="Join the Aurelia Society. Gain access to private styling slots, custom order tracking and bespoke GIA diamond listings.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  
+  <style>
+    .auth-bg {
+      background-image: url('assets/images/banners/gift-guide.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .auth-glass-panel {
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 450px;
+      padding: 3rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      color: #FAFAFA;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-bg">
+    <div class="auth-glass-panel text-center gsap-fade-up">
+      
+      <a href="index.html" class="brand-logo d-block mb-4 text-white" style="font-size: 2.2rem;">Aurelia</a>
+      
+      <h2 class="font-editorial mb-2 text-white" style="font-size: 1.8rem;">Create Vault Account</h2>
+      <p class="text-white-50 mb-4" style="font-size: 0.85rem;">Join the Aurelia Society to coordinate custom orders and bespoke designs.</p>
+
+      <form id="luxury-signup-form" onsubmit="handleSignup(event)">
+        <div class="mb-3 text-start">
+          <label class="form-label font-pricing text-white-50" style="font-size: 0.75rem;">CLIENT FULL NAME</label>
+          <input type="text" class="form-control newsletter-input py-2 text-white" required>
+        </div>
+        <div class="mb-3 text-start">
+          <label class="form-label font-pricing text-white-50" style="font-size: 0.75rem;">EMAIL ADDRESS</label>
+          <input type="email" class="form-control newsletter-input py-2 text-white" required>
+        </div>
+        <div class="mb-3 text-start">
+          <label class="form-label font-pricing text-white-50" style="font-size: 0.75rem;">DESIRED PASSWORD</label>
+          <input type="password" class="form-control newsletter-input py-2 text-white" required>
+        </div>
+        <div class="mb-4 text-start">
+          <label class="custom-checkbox text-white-50" style="font-size: 0.8rem;">
+            <input type="checkbox" required class="me-2" style="accent-color: var(--color-accent);">
+            <span>I agree to Aurelia's Terms & Private Membership Policies.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-luxury-solid btn-luxury w-100 py-3 mb-3">Register Vault</button>
+      </form>
+
+      <p class="mb-0 text-white-50" style="font-size: 0.85rem;">Already have an account? <a href="login.html" class="text-gold text-decoration-underline">Access Vault</a></p>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+
+  <script>
+    function handleSignup(e) {
+      e.preventDefault();
+      alert('Your Aurelia membership registration is complete. Redirecting you to login page...');
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

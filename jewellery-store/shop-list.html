@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fine Jewellery List Catalog | Aurelia Fine Jewellery</title>
+  <meta name="description" content="Browse Aurelia's hand-crafted collections in list format. View material lists, stone weights, and designer insights.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  
+  <style>
+    /* List View Specific Styling */
+    .product-list-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      display: flex;
+      margin-bottom: 2rem;
+      transition: var(--transition-smooth);
+      overflow: hidden;
+      width: 100%;
+    }
+    .product-list-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+    .product-list-img-wrapper {
+      width: 250px;
+      flex-shrink: 0;
+      position: relative;
+      background-color: #F6F5F2;
+    }
+    .product-list-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+    .product-list-card:hover .product-list-img {
+      transform: scale(1.05);
+    }
+    .product-list-details {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .product-list-actions {
+      width: 200px;
+      padding: 2rem;
+      border-left: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-shrink: 0;
+      background-color: rgba(0,0,0,0.01);
+    }
+    
+    @media (max-width: 768px) {
+      .product-list-card {
+        flex-direction: column;
+      }
+      .product-list-img-wrapper {
+        width: 100%;
+        height: 250px;
+      }
+      .product-list-actions {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid var(--color-border);
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="page-fade-in">
+
+  <!-- Navigation -->
+    <!-- Sticky Luxury Navigation -->
+  <header class="sticky-header">
+    <div class="navbar-container">
+      <!-- Left side: Hamburger + Logo -->
+      <div class="nav-brand-wrapper d-flex align-items-center">
+        <button class="hamburger-menu me-3">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="index.html" class="brand-logo mb-0">Aurelia</a>
+      </div>
+
+      <!-- Center side: Links -->
+      <div class="nav-links-wrapper d-none d-lg-block">
+        <ul class="nav-links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="shop.html" class="active">Shop</a></li>
+          <li><a href="blog.html" >Blog</a></li>
+          <li><a href="faq.html" >FAQ</a></li>
+          <li><a href="about.html" >About</a></li>
+          <li><a href="contact.html" >Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right side: Actions -->
+      <div class="nav-actions">
+        <button class="nav-btn search-trigger" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="wishlist.html" class="nav-btn " aria-label="Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-count wishlist-count-badge">0</span>
+        </a>
+        <button class="nav-btn cart-trigger" aria-label="Shopping Cart">
+          <i class="bi bi-bag"></i>
+          <span class="badge-count cart-count-badge">0</span>
+        </button>
+        <a href="login.html" class="nav-btn" aria-label="User Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main style="margin-top: 80px;">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container gsap-fade-up">
+        <h1>Atelier Catalogue</h1>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+          <li class="breadcrumb-item active">List View</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row">
+          
+          <!-- Filters Sidebar -->
+          <div class="col-lg-3 mb-5 mb-lg-0">
+            <div class="pe-lg-4 border-end h-100">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="filter-title mb-0">Filters</h4>
+                <button onclick="clearAllFilters()" class="btn p-0 text-decoration-underline" style="font-size: 0.8rem; color: var(--color-secondary);">Clear All</button>
+              </div>
+
+              <!-- Filter Category -->
+              <div class="filter-group">
+                <h5 class="font-editorial mb-3" style="font-size: 1.1rem; letter-spacing: 0.05em;">Collection Type</h5>
+                <ul class="filter-list">
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="category-filter" value="engagement">
+                      <span>Engagement Rings</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="category-filter" value="wedding">
+                      <span>Wedding Bands</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="category-filter" value="necklaces">
+                      <span>Fine Necklaces</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="category-filter" value="earrings">
+                      <span>Earrings</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="category-filter" value="bracelets">
+                      <span>Bracelets</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="category-filter" value="watches">
+                      <span>Luxury Watches</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Metal Type -->
+              <div class="filter-group">
+                <h5 class="font-editorial mb-3" style="font-size: 1.1rem; letter-spacing: 0.05em;">Metal Choice</h5>
+                <ul class="filter-list">
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="metal-filter" value="platinum">
+                      <span>Platinum</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="metal-filter" value="yellow-gold">
+                      <span>18K Yellow Gold</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="metal-filter" value="rose-gold">
+                      <span>18K Rose Gold</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="custom-checkbox">
+                      <input type="checkbox" class="metal-filter" value="white-gold">
+                      <span>18K White Gold</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Price Filter -->
+              <div class="filter-group">
+                <h5 class="font-editorial mb-3" style="font-size: 1.1rem; letter-spacing: 0.05em;">Price Limit</h5>
+                <input type="range" class="form-range" min="3000" max="30000" step="1000" id="priceRange" value="30000" oninput="updatePriceLabel(this.value)">
+                <div class="d-flex justify-content-between mt-2 font-pricing" style="font-size: 0.85rem;">
+                  <span>Min: $3,000</span>
+                  <span id="priceLabel" class="text-bold">Max: $30,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Listing Column -->
+          <div class="col-lg-9">
+            <!-- Toolbar -->
+            <div class="d-flex justify-content-between align-items-center mb-5 pb-3 border-bottom">
+              <div class="d-flex gap-3 align-items-center">
+                <span class="text-muted" style="font-size: 0.85rem;" id="catalog-count-label">Showing 6 Products</span>
+                <div class="d-flex gap-2">
+                  <a href="shop-grid.html" class="btn p-0 text-muted" aria-label="Grid View"><i class="bi bi-grid-3x3-gap-fill fs-5"></i></a>
+                  <a href="shop-list.html" class="btn p-0 text-bronze" aria-label="List View"><i class="bi bi-list-task fs-5"></i></a>
+                </div>
+              </div>
+              
+              <div class="d-flex align-items-center gap-2">
+                <span class="text-muted text-nowrap d-none d-sm-inline-block" style="font-size: 0.85rem;">Sort by:</span>
+                <select class="form-select border-0 font-pricing" id="sortSelect" onchange="sortCatalog()" style="font-size: 0.85rem; width: 180px; box-shadow: none;">
+                  <option value="featured">Featured Edit</option>
+                  <option value="low-high">Price: Low to High</option>
+                  <option value="high-low">Price: High to Low</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Products Catalog List Wrapper -->
+            <div id="products-list-wrapper">
+              <!-- Populated dynamically via JS -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-logo">Aurelia</div>
+                    <p class="text-muted pr-4">Refining high-luxury jewelry since 1894. Providing certified diamond rings, precious stones, and heirloom-quality craftsmanship.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Collections</h5>
+          <ul class="footer-links">
+            <li><a href="shop-grid.html?category=engagement">Engagement Rings</a></li>
+            <li><a href="shop-grid.html?category=wedding">Wedding Bands</a></li>
+            <li><a href="shop-grid.html?category=necklaces">Precious Pendants</a></li>
+            <li><a href="shop-grid.html?category=earrings">Diamond Earrings</a></li>
+            <li><a href="shop-grid.html?category=watches">Luxury Chronographs</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Customer Care</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Book Appointment</a></li>
+            <li><a href="about.html">Heritage Story</a></li>
+            <li><a href="shop.html">Certified Diamonds</a></li>
+            <li><a href="contact.html">Boutique Locations</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Boutique Consult</h5>
+          <p class="text-muted">A client advisor is available for virtual or private in-store styling appointments.</p>
+          <a href="contact.html" class="btn btn-luxury btn-luxury-gold w-100 text-center py-2" style="font-size: 0.75rem;">Schedule Consultation</a>
+        </div>
+      </div>
+      <hr class="my-5">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-muted" style="font-size: 0.8rem;">
+        <p class="mb-0">&copy; 2026 Aurelia Fine Jewellery. All Rights Reserved. Crafted for luxury commerce.</p>
+        <div class="d-flex gap-4 mt-3 mt-md-0">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">GIA Authenticity</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawer Overlay & Drawers -->
+  <div class="drawer-overlay"></div>
+
+  <!-- Search Drawer -->
+  <div class="side-drawer" id="search-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Search Collections</h5>
+      <button class="close-drawer-btn" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <form action="shop-grid.html" method="GET">
+        <div class="input-group">
+          <input type="text" class="form-control newsletter-input" placeholder="Search diamonds, rings..." name="search" required>
+          <button class="btn btn-luxury-solid px-3" type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mini Cart Drawer -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Your Shopping Bag</h5>
+      <button class="close-drawer-btn" aria-label="Close cart"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content mini-cart-items-wrapper"></div>
+    <div class="side-drawer-footer">
+      <div class="d-flex justify-content-between mb-3">
+        <span class="text-uppercase font-pricing" style="font-size: 0.85rem;">Subtotal</span>
+        <span class="font-pricing mini-cart-total-price fw-bold">$0.00</span>
+      </div>
+      <a href="cart.html" class="btn btn-luxury w-100 mb-2 text-center d-block">View Shopping Bag</a>
+      <a href="checkout.html" class="btn btn-luxury-solid w-100 text-center d-block mini-cart-checkout-btn">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="side-drawer side-drawer-left" id="mobile-menu-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Aurelia Menu</h5>
+      <button class="close-drawer-btn" aria-label="Close mobile menu"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <ul class="nav-links flex-column gap-3 fs-5" style="display: flex;">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="blog.html" >Blog</a></li>
+        <li><a href="faq.html" >FAQ</a></li>
+        <li><a href="about.html" >About Us</a></li>
+        <li><a href="contact.html" >Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Product List Mock Database
+    const initialProducts = [
+      {
+        id: 1,
+        title: "Princess Cut Solitaire Diamond Ring",
+        category: "engagement",
+        metal: "platinum",
+        price: 12500,
+        image: "assets/images/products/ring-diamond.jpg",
+        description: "An extraordinary platinum solitaire engagement ring featuring a GIA certified 2.0 carat Princess-cut diamond with VS1 clarity and Excellent proportions.",
+        badge: "Bespoke"
+      },
+      {
+        id: 2,
+        title: "Brilliant Cut Diamond Pendant",
+        category: "necklaces",
+        metal: "yellow-gold",
+        price: 8400,
+        image: "assets/images/products/necklace-gold.jpg",
+        description: "A gorgeous 18k yellow gold pendant with a central claw-set brilliant round diamond suspended from an elegant, thin matching cable link chain.",
+        badge: "Highlight"
+      },
+      {
+        id: 3,
+        title: "Baroque South Sea Pearl Drop Earrings",
+        category: "earrings",
+        metal: "rose-gold",
+        price: 4200,
+        image: "assets/images/products/earrings-pearl.jpg",
+        description: "Lustrous white Australian South Sea pearls, suspended from claw-set round brilliant rose-gold diamond clusters. Timeless red-carpet aesthetics.",
+        badge: "Rare"
+      },
+      {
+        id: 4,
+        title: "Emerald Cut Sapphire Ring",
+        category: "engagement",
+        metal: "white-gold",
+        price: 9600,
+        image: "assets/images/products/ring-sapphire.jpg",
+        description: "Deep blue velvet hues. A premium white gold shank set with a royal blue cushion sapphire flanked by tapered baguette cut diamond side stones.",
+        badge: "New"
+      },
+      {
+        id: 5,
+        title: "Solid Gold Chronograph Watch",
+        category: "watches",
+        metal: "yellow-gold",
+        price: 24500,
+        image: "assets/images/products/watch-gold.jpg",
+        description: "Fine horology. A solid 18k yellow gold bracelet chronometer timepiece featuring automatic movement, hand-guillochÃ© dial and 72-hour power reserve.",
+        badge: "Premium"
+      },
+      {
+        id: 6,
+        title: "Platinum Diamond Tennis Bracelet",
+        category: "bracelets",
+        metal: "platinum",
+        price: 18200,
+        image: "assets/images/products/bracelet-tennis.jpg",
+        description: "A continuous loop of exceptional brilliance. Structured in polished platinum, featuring 5.5 carats total weight of perfectly matched GIA diamonds.",
+        badge: "GIA Certified"
+      }
+    ];
+
+    let currentProducts = [...initialProducts];
+
+    // Filter Logic
+    function updatePriceLabel(value) {
+      document.getElementById('priceLabel').textContent = "Max: $" + parseInt(value).toLocaleString();
+      filterCatalog();
+    }
+
+    function clearAllFilters() {
+      document.querySelectorAll('.category-filter, .metal-filter').forEach(cb => cb.checked = false);
+      document.getElementById('priceRange').value = 30000;
+      document.getElementById('priceLabel').textContent = "Max: $30,000";
+      filterCatalog();
+    }
+
+    function filterCatalog() {
+      const activeCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
+      const activeMetals = Array.from(document.querySelectorAll('.metal-filter:checked')).map(cb => cb.value);
+      const maxPrice = parseFloat(document.getElementById('priceRange').value);
+
+      currentProducts = initialProducts.filter(product => {
+        if (activeCategories.length > 0 && !activeCategories.includes(product.category)) return false;
+        if (activeMetals.length > 0 && !activeMetals.includes(product.metal)) return false;
+        if (product.price > maxPrice) return false;
+        return true;
+      });
+
+      sortCatalog(false);
+      renderCatalog();
+    }
+
+    function sortCatalog(render = true) {
+      const sortVal = document.getElementById('sortSelect').value;
+      if (sortVal === 'low-high') {
+        currentProducts.sort((a, b) => a.price - b.price);
+      } else if (sortVal === 'high-low') {
+        currentProducts.sort((a, b) => b.price - a.price);
+      } else {
+        currentProducts.sort((a, b) => a.id - b.id);
+      }
+      if (render) renderCatalog();
+    }
+
+    function renderCatalog() {
+      const wrapper = document.getElementById('products-list-wrapper');
+      const countLabel = document.getElementById('catalog-count-label');
+      wrapper.innerHTML = '';
+      
+      countLabel.textContent = `Showing ${currentProducts.length} Products`;
+
+      if (currentProducts.length === 0) {
+        wrapper.innerHTML = `
+          <div class="text-center py-5">
+            <h4 class="font-editorial text-muted">No masterpieces match your active filter selections.</h4>
+            <button onclick="clearAllFilters()" class="btn btn-luxury mt-3">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      currentProducts.forEach(product => {
+        const priceStr = "$" + product.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const productHtml = `
+          <div class="product-list-card">
+            <div class="product-list-img-wrapper">
+              <span class="badge-tag">${product.badge}</span>
+              <img src="${product.image}" alt="${product.title}" class="product-list-img">
+            </div>
+            
+            <div class="product-list-details">
+              <div>
+                <p class="product-category mb-1">${product.category.toUpperCase()}</p>
+                <h4 class="font-editorial fs-3 mb-2"><a href="product-details.html">${product.title}</a></h4>
+                <p class="text-muted mb-0" style="font-size: 0.85rem;">${product.description}</p>
+              </div>
+              <div class="d-flex gap-3 align-items-center mt-3 font-pricing" style="font-size: 0.85rem;">
+                <span class="badge bg-light text-dark p-2 border">Metal: ${product.metal.toUpperCase()}</span>
+                <span class="text-muted">GIA Confirmed Source</span>
+              </div>
+            </div>
+            
+            <div class="product-list-actions">
+              <div class="font-pricing text-bronze fw-bold mb-3 fs-4">${priceStr}</div>
+              <button onclick="addToCart({id: ${product.id}, title: '${product.title}', price: '${priceStr}', image: '${product.image}'}, 1)" class="btn btn-luxury-solid btn-luxury w-100 py-2 mb-2" style="font-size: 0.75rem;">Add to Bag</button>
+              <button onclick="toggleWishlist({id: ${product.id}, title: '${product.title}', price: '${priceStr}', image: '${product.image}'})" class="btn btn-luxury w-100 py-2" style="font-size: 0.75rem;"><i class="bi bi-heart me-2"></i>Wishlist</button>
+            </div>
+          </div>
+        `;
+        wrapper.innerHTML += productHtml;
+      });
+
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get('category');
+      if (catParam) {
+        const checkbox = document.querySelector(`.category-filter[value=\"${catParam}\"]`);
+        if (checkbox) checkbox.checked = true;
+      }
+      filterCatalog();
+    });
+
+    document.querySelectorAll('.category-filter, .metal-filter').forEach(cb => {
+      cb.addEventListener('change', filterCatalog);
+    });
+  </script>
+</body>
+</html>

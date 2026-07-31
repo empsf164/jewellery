@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masterpiece Unavailable (404) | Aurelia Fine Jewellery</title>
+  <meta name="description" content="The page or jewelry model you requested is currently unavailable. Return to our catalog to explore active bespoke items.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  
+  <style>
+    .error-bg {
+      background-image: url('assets/images/banners/store-interior.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    .error-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 10, 0.8);
+      z-index: 1;
+    }
+    .error-content {
+      position: relative;
+      z-index: 5;
+      color: #FAFAFA;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-bg">
+    <div class="error-overlay"></div>
+    <div class="error-content gsap-fade-up">
+      <a href="index.html" class="brand-logo text-white d-block mb-5" style="font-size: 2.2rem;">Aurelia</a>
+      
+      <p class="text-gold text-uppercase font-pricing mb-2" style="letter-spacing: 0.25em;">Error 404</p>
+      <h1 class="font-editorial display-3 mb-4 text-white">Masterpiece Unavailable</h1>
+      <p class="text-white-50 mb-5">The boutique page, collection index, or customized jewelry record you are attempting to view has been moved, archived, or is currently unavailable.</p>
+      
+      <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+        <a href="index.html" class="btn btn-luxury-solid btn-luxury text-dark">Return to Home</a>
+        <a href="shop-grid.html" class="btn btn-luxury btn-luxury-gold text-gold">Browse Catalog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

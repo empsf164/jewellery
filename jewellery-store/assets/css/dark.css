@@ -1,0 +1,110 @@
+[data-theme="dark"] {
+  --color-primary: #FAFAFA;
+  --color-secondary: #D4A373;
+  --color-accent: #E7C768;
+  --color-highlight: #D4A373;
+  --color-background: #0A0A0A;
+  --color-surface: #161616;
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: #D1D5DB;
+
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] header.sticky-header {
+  background-color: rgba(10, 10, 10, 0.9);
+  border-bottom: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .product-image-container {
+  background-color: #121212;
+}
+
+[data-theme="dark"] .page-hero {
+  background-color: #121212;
+  border-bottom: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .side-drawer-footer {
+  background-color: #111111;
+}
+
+[data-theme="dark"] .action-icon-btn {
+  background-color: #1e1e1e;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .action-icon-btn:hover {
+  background-color: var(--color-primary);
+  color: #0A0A0A;
+}
+
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="password"],
+[data-theme="dark"] input[type="tel"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: #222222;
+  border-color: rgba(255,255,255,0.15);
+  color: #FAFAFA;
+}
+
+[data-theme="dark"] input[type="text"]:focus,
+[data-theme="dark"] input[type="email"]:focus,
+[data-theme="dark"] input[type="password"]:focus,
+[data-theme="dark"] input[type="tel"]:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: var(--color-accent);
+  background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .hamburger-menu span {
+  background-color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .btn-luxury {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+[data-theme="dark"] .btn-luxury::before {
+  background-color: var(--color-primary);
+}
+[data-theme="dark"] .btn-luxury:hover {
+  color: #0A0A0A;
+}
+
+[data-theme="dark"] .btn-luxury-solid {
+  background-color: var(--color-primary);
+  color: #0A0A0A;
+}
+[data-theme="dark"] .btn-luxury-solid::before {
+  background-color: var(--color-secondary);
+}
+[data-theme="dark"] .btn-luxury-solid:hover {
+  color: #FAFAFA;
+  border-color: var(--color-secondary);
+}
+
+[data-theme="dark"] .badge-count {
+  background-color: var(--color-accent);
+  color: #0A0A0A;
+}
+
+[data-theme="dark"] .lookbook-popover {
+  background-color: #1c1c1c;
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+[data-theme="dark"] .breadcrumb-item::before {
+  color: var(--color-text-secondary);
+}

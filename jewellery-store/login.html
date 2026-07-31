@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Sign In | Aurelia Fine Jewellery</title>
+  <meta name="description"
+    content="Sign in to your private Aurelia client account to view bespoke orders, GIA tracking dossiers and saved wishlists.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+
+  <style>
+    .auth-bg {
+      background-image: url('assets/images/banners/gift-guide.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .auth-glass-panel {
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 450px;
+      padding: 3rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      color: #FAFAFA;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="auth-bg">
+    <div class="auth-glass-panel text-center gsap-fade-up">
+
+      <a href="index.html" class="brand-logo d-block mb-4 text-white" style="font-size: 2.2rem;">Aurelia</a>
+
+      <h2 class="font-editorial mb-2 text-white" style="font-size: 1.8rem;">Client Sign In</h2>
+      <p class="text-white-50 mb-4" style="font-size: 0.85rem;">Welcome back. Enter your credentials to access your
+        private vault.</p>
+
+      <form id="luxury-login-form" onsubmit="handleLogin(event)">
+        <div class="mb-3 text-start">
+          <label class="form-label font-pricing text-white-50" style="font-size: 0.75rem;">EMAIL ADDRESS</label>
+          <input type="email" class="form-control newsletter-input py-2 text-white" required>
+        </div>
+        <div class="mb-3 text-start">
+          <label class="form-label font-pricing text-white-50" style="font-size: 0.75rem;">VAULT PASSWORD</label>
+          <div class="position-relative">
+            <input type="password" class="form-control newsletter-input py-2 text-white" id="password-field" required>
+            <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y border-0 text-white-50"
+              onclick="togglePassVisibility()" style="background: none;"><i class="bi bi-eye"
+                id="eye-icon"></i></button>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <label class="custom-checkbox text-white-50"
+            style="font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; user-select: none;">
+            <input type="checkbox" class="me-2" style="accent-color: var(--color-accent);">
+            <span>Remember Me</span>
+          </label>
+          <a href="#" onclick="alert('Password reset instructions sent to registered address.'); return false;"
+            class="text-gold text-decoration-underline" style="font-size: 0.8rem;">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-luxury-solid btn-luxury w-100 py-3 mb-3">Access Vault</button>
+      </form>
+
+      <p class="mb-0 text-white-50" style="font-size: 0.85rem;">New to the Aurelia Society? <a href="signup.html"
+          class="text-gold text-decoration-underline">Register Here</a></p>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+
+  <script>
+    function togglePassVisibility() {
+      const field = document.getElementById('password-field');
+      const icon = document.getElementById('eye-icon');
+      if (field.type === 'password') {
+        field.type = 'text';
+        icon.className = 'bi bi-eye-slash';
+      } else {
+        field.type = 'password';
+        icon.className = 'bi bi-eye';
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      alert('Vault authorization successful. Redirecting you to Boutique Home...');
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+
+</html>

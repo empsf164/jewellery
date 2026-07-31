@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout | Aurelia Fine Jewellery</title>
+  <meta name="description" content="Securely complete your luxury jewellery order. SSL encrypted payments, GIA diamond validation, insured courier shipping.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  
+  <style>
+    .payment-option-card {
+      border: 1px solid var(--color-border);
+      padding: 1rem;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      background-color: var(--color-surface);
+    }
+    .payment-option-card.active {
+      border-color: var(--color-secondary);
+      background-color: rgba(139, 115, 85, 0.05);
+    }
+  </style>
+</head>
+<body class="page-fade-in">
+
+  <!-- Navigation -->
+    <!-- Sticky Luxury Navigation -->
+  <header class="sticky-header">
+    <div class="navbar-container">
+      <!-- Left side: Hamburger + Logo -->
+      <div class="nav-brand-wrapper d-flex align-items-center">
+        <button class="hamburger-menu me-3">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="index.html" class="brand-logo mb-0">Aurelia</a>
+      </div>
+
+      <!-- Center side: Links -->
+      <div class="nav-links-wrapper d-none d-lg-block">
+        <ul class="nav-links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="shop.html" >Shop</a></li>
+          <li><a href="blog.html" >Blog</a></li>
+          <li><a href="faq.html" >FAQ</a></li>
+          <li><a href="about.html" >About</a></li>
+          <li><a href="contact.html" >Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right side: Actions -->
+      <div class="nav-actions">
+        <button class="nav-btn search-trigger" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="wishlist.html" class="nav-btn " aria-label="Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-count wishlist-count-badge">0</span>
+        </a>
+        <button class="nav-btn cart-trigger" aria-label="Shopping Cart">
+          <i class="bi bi-bag"></i>
+          <span class="badge-count cart-count-badge">0</span>
+        </button>
+        <a href="login.html" class="nav-btn" aria-label="User Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main style="margin-top: 80px;">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container gsap-fade-up">
+        <h1>Secure Checkout</h1>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="cart.html">Shopping Bag</a></li>
+          <li class="breadcrumb-item active">Checkout</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Checkout Flow -->
+    <section class="section-padding">
+      <div class="container">
+        <form id="luxury-checkout-form" onsubmit="handleCheckout(event)">
+          <div class="row g-5">
+            
+            <!-- Forms Column -->
+            <div class="col-lg-7 gsap-fade-up">
+              <!-- Shipping Details -->
+              <h3 class="font-editorial fs-3 mb-4 border-bottom pb-2">1. Insured Shipping Destination</h3>
+              <div class="row g-3 mb-5">
+                <div class="col-md-6">
+                  <label class="form-label font-pricing" style="font-size: 0.8rem;">First Name *</label>
+                  <input type="text" class="form-control newsletter-input py-2" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label font-pricing" style="font-size: 0.8rem;">Last Name *</label>
+                  <input type="text" class="form-control newsletter-input py-2" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label font-pricing" style="font-size: 0.8rem;">Street Address *</label>
+                  <input type="text" class="form-control newsletter-input py-2" placeholder="Suite, apartment number, house number" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label font-pricing" style="font-size: 0.8rem;">City *</label>
+                  <input type="text" class="form-control newsletter-input py-2" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label font-pricing" style="font-size: 0.8rem;">Postal Code *</label>
+                  <input type="text" class="form-control newsletter-input py-2" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label font-pricing" style="font-size: 0.8rem;">Email Address (For GIA copies) *</label>
+                  <input type="email" class="form-control newsletter-input py-2" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label font-pricing" style="font-size: 0.8rem;">Contact Phone (For courier scheduling) *</label>
+                  <input type="tel" class="form-control newsletter-input py-2" required>
+                </div>
+              </div>
+
+              <!-- Payment Details -->
+              <h3 class="font-editorial fs-3 mb-4 border-bottom pb-2">2. Secure Payment Method</h3>
+              <div class="row g-3 mb-5">
+                <div class="col-md-6">
+                  <div class="payment-option-card active text-center" onclick="selectPayment('card')">
+                    <i class="bi bi-credit-card fs-2 text-bronze"></i>
+                    <h5 class="font-editorial mt-2 mb-0">Credit / Debit Card</h5>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="payment-option-card text-center" onclick="selectPayment('paypal')">
+                    <i class="bi bi-paypal fs-2 text-muted"></i>
+                    <h5 class="font-editorial mt-2 mb-0">PayPal Concierge</h5>
+                  </div>
+                </div>
+                
+                <!-- Credit Card Fields -->
+                <div id="card-fields-wrapper" class="row g-3 mt-2">
+                  <div class="col-12">
+                    <label class="form-label font-pricing" style="font-size: 0.8rem;">Cardholder Name *</label>
+                    <input type="text" class="form-control newsletter-input py-2" id="cc-name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label font-pricing" style="font-size: 0.8rem;">Credit Card Number *</label>
+                    <input type="text" class="form-control newsletter-input py-2" placeholder="XXXX XXXX XXXX XXXX" id="cc-num" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label font-pricing" style="font-size: 0.8rem;">Expiration Date *</label>
+                    <input type="text" class="form-control newsletter-input py-2" placeholder="MM/YY" id="cc-exp" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label font-pricing" style="font-size: 0.8rem;">CVV *</label>
+                    <input type="password" class="form-control newsletter-input py-2" placeholder="***" id="cc-cvv" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-luxury-solid btn-luxury w-100 py-3 mb-3">Place Fully Insured Order</button>
+              <p class="text-muted text-center" style="font-size: 0.75rem;"><i class="bi bi-shield-lock-fill me-1 text-success"></i>All transactions are processed through end-to-end encrypted gateways. No card detail is stored on our servers.</p>
+            </div>
+
+            <!-- Summary Column -->
+            <div class="col-lg-5 gsap-fade-up">
+              <div class="glass-panel p-4 sticky-top" style="top: 100px;">
+                <h4 class="font-editorial fs-3 mb-4 border-bottom pb-2">Your Order Summary</h4>
+                
+                <!-- Items list -->
+                <div class="mb-4" id="checkout-summary-items-list" style="max-height: 250px; overflow-y: auto;">
+                  <!-- Loaded via JS -->
+                </div>
+                
+                <hr>
+
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted" style="font-size: 0.9rem;">Cart Subtotal</span>
+                  <span class="font-pricing" id="checkoutSubtotal">$0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted" style="font-size: 0.9rem;">Tax</span>
+                  <span class="font-pricing" id="checkoutTax">$0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted" style="font-size: 0.9rem;">Delivery</span>
+                  <span class="font-pricing text-gold text-uppercase">Complimentary</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <span class="text-uppercase fw-bold font-pricing" style="font-size: 0.85rem;">Estimated Total</span>
+                  <span class="font-pricing fs-3 text-bronze fw-bold" id="checkoutTotal">$0.00</span>
+                </div>
+
+                <!-- GIA badge box -->
+                <div class="border p-3 text-center mb-0 bg-white text-dark">
+                  <i class="bi bi-patch-check text-gold fs-3 mb-2"></i>
+                  <h6 class="font-editorial mb-1">GIA Registered Order</h6>
+                  <p class="text-muted mb-0" style="font-size: 0.75rem;">Your diamonds are registered in GIA databases under your shipping details to guarantee authenticity and insurance values.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6">
+    <div class="container py-5 text-center text-muted" style="font-size: 0.8rem;">
+      <p class="mb-0">&copy; 2026 Aurelia Fine Jewellery. Secure Checkout Page. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    function selectPayment(mode) {
+      const cards = document.querySelectorAll('.payment-option-card');
+      cards.forEach(c => c.classList.remove('active'));
+      
+      const cardFields = document.getElementById('card-fields-wrapper');
+      const ccName = document.getElementById('cc-name');
+      const ccNum = document.getElementById('cc-num');
+      const ccExp = document.getElementById('cc-exp');
+      const ccCvv = document.getElementById('cc-cvv');
+
+      if (mode === 'card') {
+        cards[0].classList.add('active');
+        cardFields.style.opacity = '1';
+        ccName.required = true;
+        ccNum.required = true;
+        ccExp.required = true;
+        ccCvv.required = true;
+      } else {
+        cards[1].classList.add('active');
+        cardFields.style.opacity = '0.3';
+        ccName.required = false;
+        ccNum.required = false;
+        ccExp.required = false;
+        ccCvv.required = false;
+      }
+    }
+
+    function renderCheckoutSummary() {
+      const wrapper = document.getElementById('checkout-summary-items-list');
+      const cart = getCart();
+
+      if (cart.length === 0) {
+        window.location.href = "cart.html";
+        return;
+      }
+
+      wrapper.innerHTML = '';
+      let subtotal = 0;
+
+      cart.forEach(item => {
+        const priceNum = parseFloat(item.price.replace(/[$,]/g, ''));
+        const itemSubtotal = priceNum * item.quantity;
+        subtotal += itemSubtotal;
+
+        const itemHtml = `
+          <div class="d-flex align-items-center mb-3">
+            <img src="${item.image}" alt="${item.title}" style="width: 50px; height: 55px; object-fit: cover; border: 1px solid var(--color-border);" class="me-3">
+            <div class="flex-grow-1">
+              <h6 class="mb-0 font-editorial" style="font-size: 0.9rem;">${item.title}</h6>
+              <small class="text-muted d-block" style="font-size: 0.75rem;">Metal: ${item.metal} | Size: ${item.size}</small>
+              <small class="text-muted font-pricing" style="font-size: 0.75rem;">Qty: ${item.quantity} x ${item.price}</small>
+            </div>
+            <span class="font-pricing text-bronze text-end" style="font-size: 0.85rem;">$${itemSubtotal.toLocaleString()}</span>
+          </div>
+        `;
+        wrapper.innerHTML += itemHtml;
+      });
+
+      const tax = subtotal * 0.085;
+      const total = subtotal + tax;
+
+      document.getElementById('checkoutSubtotal').textContent = "$" + subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('checkoutTax').textContent = "$" + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('checkoutTotal').textContent = "$" + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function handleCheckout(e) {
+      e.preventDefault();
+      alert('Securing connection... Processing your transaction... Your order has been placed successfully! GIA documentation details will be emailed shortly. Redirecting you to Aurelia Home...');
+      
+      // Clear cart
+      localStorage.removeItem('luxury_cart');
+      
+      // Redirect
+      window.location.href = "index.html";
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCheckoutSummary);
+  </script>
+</body>
+</html>

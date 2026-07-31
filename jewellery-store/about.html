@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Heritage & Craftsmanship | Aurelia Fine Jewellery</title>
+  <meta name="description" content="Discover the history of Aurelia Fine Jewellery since 1894. Explore our timeline, gemstone cutting procedures, and master craftsman philosophy.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  
+  <style>
+    /* Timeline styles */
+    .timeline-wrapper {
+      position: relative;
+      padding: 2rem 0;
+    }
+    .timeline-wrapper::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      background-color: var(--color-border);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+    }
+    .timeline-item {
+      padding: 2rem 0;
+      position: relative;
+    }
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      background-color: var(--color-secondary);
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-wrapper::after {
+        left: 20px;
+      }
+      .timeline-dot {
+        left: 20px;
+      }
+      .timeline-item-left, .timeline-item-right {
+        padding-left: 45px !important;
+        text-align: left !important;
+      }
+    }
+  </style>
+</head>
+<body class="page-fade-in">
+
+  <!-- Navigation -->
+    <!-- Sticky Luxury Navigation -->
+  <header class="sticky-header">
+    <div class="navbar-container">
+      <!-- Left side: Hamburger + Logo -->
+      <div class="nav-brand-wrapper d-flex align-items-center">
+        <button class="hamburger-menu me-3">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="index.html" class="brand-logo mb-0">Aurelia</a>
+      </div>
+
+      <!-- Center side: Links -->
+      <div class="nav-links-wrapper d-none d-lg-block">
+        <ul class="nav-links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="shop.html" >Shop</a></li>
+          <li><a href="blog.html" >Blog</a></li>
+          <li><a href="faq.html" >FAQ</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="contact.html" >Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right side: Actions -->
+      <div class="nav-actions">
+        <button class="nav-btn search-trigger" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="wishlist.html" class="nav-btn " aria-label="Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-count wishlist-count-badge">0</span>
+        </a>
+        <button class="nav-btn cart-trigger" aria-label="Shopping Cart">
+          <i class="bi bi-bag"></i>
+          <span class="badge-count cart-count-badge">0</span>
+        </button>
+        <a href="login.html" class="nav-btn" aria-label="User Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main style="margin-top: 80px;">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container gsap-fade-up">
+        <h1>Our Heritage</h1>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">About Us</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Legacy Introduction -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 gsap-fade-up">
+            <span class="text-gold text-uppercase font-pricing mb-2 d-block" style="letter-spacing: 0.15em;">The Aurelia Spirit</span>
+            <h2 class="font-editorial display-4 mb-4">Crafting Brilliance, Honoring Heritage</h2>
+            <p class="text-muted mb-4">Founded in the historic jewelry quarters of Antwerp in 1894, Aurelia has stood for a commitment to exquisite craftsmanship, ethical sourcing, and classical design. We believe that fine jewelry is not an accessory, but an heirloom-to-be, housing memories and milestones.</p>
+            <p class="text-muted">Our artisans train for over a decade in metallurgy and diamond micro-setting to ensure that every crown, claw, and band provides unparalleled comfort and longevity.</p>
+          </div>
+          <div class="col-lg-6 gsap-fade-up">
+            <div class="position-relative">
+              <img src="assets/images/banners/craftsmanship.png" alt="Artisans at work" class="img-fluid border shadow-sm">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Heritage Timeline -->
+    <section class="section-padding border-top" style="background-color: var(--color-surface);">
+      <div class="container">
+        <div class="section-title gsap-fade-up">
+          <p>Chronicles of Aurelia</p>
+          <h2>The Journey Since 1894</h2>
+        </div>
+
+        <div class="timeline-wrapper">
+          
+          <!-- Item 1 -->
+          <div class="row timeline-item align-items-center g-4">
+            <div class="col-md-6 text-md-end pe-md-5 timeline-item-left gsap-fade-up">
+              <h4 class="font-editorial fs-3 text-bronze mb-2">1894</h4>
+              <h5 class="font-editorial fs-5 mb-2">The Antwerp Atelier</h5>
+              <p class="text-muted mb-0">Master cutter Jean-Laurent Aurelia opens his boutique storefront in Antwerp, serving royal patrons with cushion-cut diamond commissions.</p>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="col-md-6 ps-md-5 d-none d-md-block gsap-fade-up">
+              <img src="assets/images/collections/engagement.jpg" alt="Antwerp historic storefront" class="img-fluid border" style="max-height: 200px; width: 100%; object-fit: cover;">
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="row timeline-item align-items-center g-4">
+            <div class="col-md-6 pe-md-5 d-none d-md-block gsap-fade-up">
+              <img src="assets/images/lookbook/lookbook-2.jpg" alt="London Flagship" class="img-fluid border" style="max-height: 200px; width: 100%; object-fit: cover;">
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="col-md-6 ps-md-5 timeline-item-right gsap-fade-up">
+              <h4 class="font-editorial fs-3 text-bronze mb-2">1935</h4>
+              <h5 class="font-editorial fs-5 mb-2">London Expansion</h5>
+              <p class="text-muted mb-0">Aurelia establishes a flagship boutique on Bond Street, introducing bespoke emerald drop collections to London high society.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="row timeline-item align-items-center g-4">
+            <div class="col-md-6 text-md-end pe-md-5 timeline-item-left gsap-fade-up">
+              <h4 class="font-editorial fs-3 text-bronze mb-2">1998</h4>
+              <h5 class="font-editorial fs-5 mb-2">The Conflict-Free Pact</h5>
+              <p class="text-muted mb-0">Aurelia becomes one of the founding members of the international sourcing guidelines, pledging 100% GIA conflict-free diamond tracking.</p>
+            </div>
+            <div class="timeline-dot"></div>
+            <div class="col-md-6 ps-md-5 d-none d-md-block gsap-fade-up">
+              <img src="assets/images/products/ring-diamond.jpg" alt="Conflict free diamonds" class="img-fluid border" style="max-height: 200px; width: 100%; object-fit: cover;">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Map & Store Locations -->
+    <section class="section-padding border-top">
+      <div class="container">
+        <div class="section-title gsap-fade-up">
+          <p>Global presence</p>
+          <h2>Boutique Store Locations</h2>
+        </div>
+
+        <div class="row g-4 justify-content-center text-center">
+          <!-- Loc 1 -->
+          <div class="col-md-4 gsap-fade-up">
+            <div class="glass-panel p-4 h-100">
+              <i class="bi bi-geo-alt text-gold fs-2 mb-3"></i>
+              <h4 class="font-editorial fs-4 mb-2">Bond Street Boutique</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">142 New Bond St, London, W1S 2TL<br>Phone: +44 20 7946 0844</p>
+              <a href="contact.html" class="text-gold text-decoration-underline" style="font-size: 0.85rem;">Book styling visit</a>
+            </div>
+          </div>
+          <!-- Loc 2 -->
+          <div class="col-md-4 gsap-fade-up">
+            <div class="glass-panel p-4 h-100">
+              <i class="bi bi-geo-alt text-gold fs-2 mb-3"></i>
+              <h4 class="font-editorial fs-4 mb-2">Fifth Avenue Salon</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">712 Fifth Ave, New York, NY 10019<br>Phone: +1 212 555 0192</p>
+              <a href="contact.html" class="text-gold text-decoration-underline" style="font-size: 0.85rem;">Book styling visit</a>
+            </div>
+          </div>
+          <!-- Loc 3 -->
+          <div class="col-md-4 gsap-fade-up">
+            <div class="glass-panel p-4 h-100">
+              <i class="bi bi-geo-alt text-gold fs-2 mb-3"></i>
+              <h4 class="font-editorial fs-4 mb-2">Geneva Atelier</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">Rue du RhÃ´ne 62, 1204 Geneva<br>Phone: +41 22 555 9841</p>
+              <a href="contact.html" class="text-gold text-decoration-underline" style="font-size: 0.85rem;">Book styling visit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-logo">Aurelia</div>
+                    <p class="text-muted pr-4">Refining high-luxury jewelry since 1894. Providing certified diamond rings, precious stones, and heirloom-quality craftsmanship.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Collections</h5>
+          <ul class="footer-links">
+            <li><a href="shop-grid.html?category=engagement">Engagement Rings</a></li>
+            <li><a href="shop-grid.html?category=wedding">Wedding Bands</a></li>
+            <li><a href="shop-grid.html?category=necklaces">Precious Pendants</a></li>
+            <li><a href="shop-grid.html?category=earrings">Diamond Earrings</a></li>
+            <li><a href="shop-grid.html?category=watches">Luxury Chronographs</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Customer Care</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Book Appointment</a></li>
+            <li><a href="about.html" class="active">Heritage Story</a></li>
+            <li><a href="shop.html">Certified Diamonds</a></li>
+            <li><a href="contact.html">Boutique Locations</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Boutique Consult</h5>
+          <p class="text-muted">A client advisor is available for virtual or private in-store styling appointments.</p>
+          <a href="contact.html" class="btn btn-luxury btn-luxury-gold w-100 text-center py-2" style="font-size: 0.75rem;">Schedule Consultation</a>
+        </div>
+      </div>
+      <hr class="my-5">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-muted" style="font-size: 0.8rem;">
+        <p class="mb-0">&copy; 2026 Aurelia Fine Jewellery. All Rights Reserved. Crafted for luxury commerce.</p>
+        <div class="d-flex gap-4 mt-3 mt-md-0">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">GIA Authenticity</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawer Overlay & Drawers -->
+  <div class="drawer-overlay"></div>
+
+  <!-- Search Drawer -->
+  <div class="side-drawer" id="search-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Search Collections</h5>
+      <button class="close-drawer-btn" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <form action="shop-grid.html" method="GET">
+        <div class="input-group">
+          <input type="text" class="form-control newsletter-input" placeholder="Search diamonds, rings..." name="search" required>
+          <button class="btn btn-luxury-solid px-3" type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mini Cart Drawer -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Your Shopping Bag</h5>
+      <button class="close-drawer-btn" aria-label="Close cart"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content mini-cart-items-wrapper"></div>
+    <div class="side-drawer-footer">
+      <div class="d-flex justify-content-between mb-3">
+        <span class="text-uppercase font-pricing" style="font-size: 0.85rem;">Subtotal</span>
+        <span class="font-pricing mini-cart-total-price fw-bold">$0.00</span>
+      </div>
+      <a href="cart.html" class="btn btn-luxury w-100 mb-2 text-center d-block">View Shopping Bag</a>
+      <a href="checkout.html" class="btn btn-luxury-solid w-100 text-center d-block mini-cart-checkout-btn">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="side-drawer side-drawer-left" id="mobile-menu-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Aurelia Menu</h5>
+      <button class="close-drawer-btn" aria-label="Close mobile menu"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <ul class="nav-links flex-column gap-3 fs-5" style="display: flex;">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="shop.html" >Shop</a></li>
+        <li><a href="blog.html" >Blog</a></li>
+        <li><a href="faq.html" >FAQ</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="contact.html" >Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

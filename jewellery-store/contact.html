@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Private Consultation Booking | Aurelia Fine Jewellery</title>
+  <meta name="description" content="Book a private virtual or in-store diamond consultation styling appointment with Aurelia client advisors. Find showroom directions.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body class="page-fade-in">
+
+  <!-- Navigation -->
+    <!-- Sticky Luxury Navigation -->
+  <header class="sticky-header">
+    <div class="navbar-container">
+      <!-- Left side: Hamburger + Logo -->
+      <div class="nav-brand-wrapper d-flex align-items-center">
+        <button class="hamburger-menu me-3">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="index.html" class="brand-logo mb-0">Aurelia</a>
+      </div>
+
+      <!-- Center side: Links -->
+      <div class="nav-links-wrapper d-none d-lg-block">
+        <ul class="nav-links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="shop.html" >Shop</a></li>
+          <li><a href="blog.html" >Blog</a></li>
+          <li><a href="faq.html" >FAQ</a></li>
+          <li><a href="about.html" >About</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right side: Actions -->
+      <div class="nav-actions">
+        <button class="nav-btn search-trigger" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="wishlist.html" class="nav-btn " aria-label="Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-count wishlist-count-badge">0</span>
+        </a>
+        <button class="nav-btn cart-trigger" aria-label="Shopping Cart">
+          <i class="bi bi-bag"></i>
+          <span class="badge-count cart-count-badge">0</span>
+        </button>
+        <a href="login.html" class="nav-btn" aria-label="User Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main style="margin-top: 80px;">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container gsap-fade-up">
+        <h1>Boutique Booking</h1>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Contact & Consultations</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Appointment & Contact -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- Booking Form Widget -->
+          <div class="col-lg-6 gsap-fade-up">
+            <div class="appointment-card">
+              <span class="text-gold text-uppercase font-pricing mb-2 d-block" style="letter-spacing: 0.15em; font-size: 0.75rem;">Private Appointments</span>
+              <h2 class="font-editorial mb-4" style="font-size: 2.2rem;">Book A Private Consultation</h2>
+              <p class="text-muted mb-4">Select a preferred date and consultation medium. Our dedicated boutique concierges will host you for custom engagement fittings, gemstone education, or bespoke commissions.</p>
+              
+              <form id="consultation-booking-form">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label font-pricing text-muted" style="font-size: 0.8rem;">Full Name *</label>
+                    <input type="text" class="form-control newsletter-input py-2" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label font-pricing text-muted" style="font-size: 0.8rem;">Email Address *</label>
+                    <input type="email" class="form-control newsletter-input py-2" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label font-pricing text-muted" style="font-size: 0.8rem;">Showroom Selection *</label>
+                    <select class="form-select newsletter-input py-2" required style="height: 45px;">
+                      <option value="london">Bond Street (London)</option>
+                      <option value="newyork">Fifth Avenue (New York)</option>
+                      <option value="geneva">RhÃ´ne (Geneva)</option>
+                      <option value="virtual">Virtual Advisory Session</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label font-pricing text-muted" style="font-size: 0.8rem;">Preferred Date *</label>
+                    <input type="date" class="form-control newsletter-input py-2" required style="height: 45px;">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label font-pricing text-muted" style="font-size: 0.8rem;">Consultation Objectives *</label>
+                    <textarea class="form-control newsletter-input py-2" rows="3" placeholder="Describe diamond carat interests, bespoke shapes, ring sizing, or jewelry collection targets..." required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-luxury-solid btn-luxury w-100 py-3 mt-2">Request Secure Booking Slot</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- General Inquiries and Map -->
+          <div class="col-lg-6 gsap-fade-up">
+            <span class="text-bronze text-uppercase font-pricing mb-2 d-block" style="letter-spacing: 0.15em; font-size: 0.75rem;">Atelier Inquiries</span>
+            <h2 class="font-editorial mb-4" style="font-size: 2.2rem;">Client Advisory Services</h2>
+            <p class="text-muted mb-5">Have a question regarding shipping transit safety, return limits, GIA credentials, or product availability? Reach our client advisor team via form submission below.</p>
+            
+            <form id="boutique-contact-form" class="mb-5">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input type="text" class="form-control newsletter-input py-2" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control newsletter-input py-2" placeholder="Your Email" required>
+                </div>
+                <div class="col-12">
+                  <textarea class="form-control newsletter-input py-2" rows="3" placeholder="Enter message text..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-luxury py-2 px-4">Submit Inquiries</button>
+                </div>
+              </div>
+            </form>
+
+            <h3 class="font-editorial fs-4 mb-3 border-bottom pb-2">Direct Showroom Contacts</h3>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <h6 class="mb-1 font-editorial">London Advisory Board</h6>
+                <p class="text-muted mb-0" style="font-size: 0.85rem;">Phone: +44 20 7946 0844<br>Email: concierge.uk@aurelia.com</p>
+              </div>
+              <div class="col-sm-6">
+                <h6 class="mb-1 font-editorial">New York Advisory Board</h6>
+                <p class="text-muted mb-0" style="font-size: 0.85rem;">Phone: +1 212 555 0192<br>Email: concierge.us@aurelia.com</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Showroom map embed -->
+    <section class="p-0 border-top">
+      <div class="w-100" style="height: 450px;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.905623048564!2d-0.1444146233772879!3d51.5149495718151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876053531b26857%3A0x6b2b6ab0c9beba63!2sNew%20Bond%20St%2C%20London%2C%20UK!5e0!3m2!1sen!2s!4v1717200000000!5m2!1sen!2s" width="100%" height="100%" style="border:0; display:block; filter: grayscale(1) contrast(1.1) invert(0.08);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-logo">Aurelia</div>
+                    <p class="text-muted pr-4">Refining high-luxury jewelry since 1894. Providing certified diamond rings, precious stones, and heirloom-quality craftsmanship.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Collections</h5>
+          <ul class="footer-links">
+            <li><a href="shop-grid.html?category=engagement">Engagement Rings</a></li>
+            <li><a href="shop-grid.html?category=wedding">Wedding Bands</a></li>
+            <li><a href="shop-grid.html?category=necklaces">Precious Pendants</a></li>
+            <li><a href="shop-grid.html?category=earrings">Diamond Earrings</a></li>
+            <li><a href="shop-grid.html?category=watches">Luxury Chronographs</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Customer Care</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html" class="active">Book Appointment</a></li>
+            <li><a href="about.html">Heritage Story</a></li>
+            <li><a href="shop.html">Certified Diamonds</a></li>
+            <li><a href="contact.html">Boutique Locations</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Boutique Consult</h5>
+          <p class="text-muted">A client advisor is available for virtual or private in-store styling appointments.</p>
+          <a href="contact.html" class="btn btn-luxury btn-luxury-gold w-100 text-center py-2" style="font-size: 0.75rem;">Schedule Consultation</a>
+        </div>
+      </div>
+      <hr class="my-5">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-muted" style="font-size: 0.8rem;">
+        <p class="mb-0">&copy; 2026 Aurelia Fine Jewellery. All Rights Reserved. Crafted for luxury commerce.</p>
+        <div class="d-flex gap-4 mt-3 mt-md-0">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">GIA Authenticity</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawer Overlay & Drawers -->
+  <div class="drawer-overlay"></div>
+
+  <!-- Search Drawer -->
+  <div class="side-drawer" id="search-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Search Collections</h5>
+      <button class="close-drawer-btn" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <form action="shop-grid.html" method="GET">
+        <div class="input-group">
+          <input type="text" class="form-control newsletter-input" placeholder="Search diamonds, rings..." name="search" required>
+          <button class="btn btn-luxury-solid px-3" type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mini Cart Drawer -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Your Shopping Bag</h5>
+      <button class="close-drawer-btn" aria-label="Close cart"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content mini-cart-items-wrapper"></div>
+    <div class="side-drawer-footer">
+      <div class="d-flex justify-content-between mb-3">
+        <span class="text-uppercase font-pricing" style="font-size: 0.85rem;">Subtotal</span>
+        <span class="font-pricing mini-cart-total-price fw-bold">$0.00</span>
+      </div>
+      <a href="cart.html" class="btn btn-luxury w-100 mb-2 text-center d-block">View Shopping Bag</a>
+      <a href="checkout.html" class="btn btn-luxury-solid w-100 text-center d-block mini-cart-checkout-btn">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="side-drawer side-drawer-left" id="mobile-menu-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Aurelia Menu</h5>
+      <button class="close-drawer-btn" aria-label="Close mobile menu"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <ul class="nav-links flex-column gap-3 fs-5" style="display: flex;">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="shop.html" >Shop</a></li>
+        <li><a href="blog.html" >Blog</a></li>
+        <li><a href="faq.html" >FAQ</a></li>
+        <li><a href="about.html" >About Us</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

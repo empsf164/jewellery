@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Bag | Aurelia Fine Jewellery</title>
+  <meta name="description" content="Review items in your Aurelia shopping bag, apply promotional privileges and proceed to secure insured checkout.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body class="page-fade-in">
+
+  <!-- Navigation -->
+    <!-- Sticky Luxury Navigation -->
+  <header class="sticky-header">
+    <div class="navbar-container">
+      <!-- Left side: Hamburger + Logo -->
+      <div class="nav-brand-wrapper d-flex align-items-center">
+        <button class="hamburger-menu me-3">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="index.html" class="brand-logo mb-0">Aurelia</a>
+      </div>
+
+      <!-- Center side: Links -->
+      <div class="nav-links-wrapper d-none d-lg-block">
+        <ul class="nav-links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="shop.html" >Shop</a></li>
+          <li><a href="blog.html" >Blog</a></li>
+          <li><a href="faq.html" >FAQ</a></li>
+          <li><a href="about.html" >About</a></li>
+          <li><a href="contact.html" >Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Right side: Actions -->
+      <div class="nav-actions">
+        <button class="nav-btn search-trigger" aria-label="Search"><i class="bi bi-search"></i></button>
+        <a href="wishlist.html" class="nav-btn " aria-label="Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-count wishlist-count-badge">0</span>
+        </a>
+        <button class="nav-btn cart-trigger" aria-label="Shopping Cart">
+          <i class="bi bi-bag"></i>
+          <span class="badge-count cart-count-badge">0</span>
+        </button>
+        <a href="login.html" class="nav-btn" aria-label="User Account"><i class="bi bi-person"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main style="margin-top: 80px;">
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container gsap-fade-up">
+        <h1>Shopping Bag</h1>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+          <li class="breadcrumb-item active">Cart</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Shopping Bag Details -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row g-5" id="cart-content-row">
+          
+          <!-- Cart Table Column -->
+          <div class="col-lg-8">
+            <div class="table-responsive">
+              <table class="table align-middle">
+                <thead>
+                  <tr class="text-uppercase text-muted font-pricing" style="font-size: 0.75rem; letter-spacing: 0.1em;">
+                    <th scope="col">Product Details</th>
+                    <th scope="col" class="text-center">Quantity</th>
+                    <th scope="col" class="text-end">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody id="full-cart-items-wrapper">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+            
+            <!-- Promo Code & Actions -->
+            <div class="row mt-4 align-items-center">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <div class="input-group" style="max-width: 320px;">
+                  <input type="text" class="form-control newsletter-input py-2" placeholder="Promo Code: AURELIA10" id="promoInput">
+                  <button class="btn btn-luxury-solid px-3" onclick="applyPromo()">Apply</button>
+                </div>
+                <small class="text-success mt-1 d-none" id="promoSuccessText">Promo code active: 10% Discount applied.</small>
+              </div>
+              <div class="col-md-6 text-md-end">
+                <a href="shop-grid.html" class="btn btn-luxury py-2">Continue Shopping</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout Order Summary -->
+          <div class="col-lg-4">
+            <div class="glass-panel p-4">
+              <h4 class="font-editorial fs-3 mb-4 border-bottom pb-2">Order Summary</h4>
+              
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted" style="font-size: 0.9rem;">Cart Subtotal</span>
+                <span class="font-pricing" id="summarySubtotal">$0.00</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2 text-success d-none" id="summaryDiscountRow">
+                <span style="font-size: 0.9rem;">Promo Code (10%)</span>
+                <span class="font-pricing" id="summaryDiscount">-$0.00</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted" style="font-size: 0.9rem;">Insured Delivery</span>
+                <span class="font-pricing text-uppercase text-gold" id="summaryShipping">Complimentary</span>
+              </div>
+              <div class="d-flex justify-content-between mb-4">
+                <span class="text-muted" style="font-size: 0.9rem;">Estimated Tax</span>
+                <span class="font-pricing" id="summaryTax">$0.00</span>
+              </div>
+              
+              <hr>
+
+              <div class="d-flex justify-content-between mb-4 align-items-center">
+                <span class="text-uppercase fw-bold font-pricing" style="font-size: 0.85rem;">Estimated Total</span>
+                <span class="font-pricing fs-3 text-bronze fw-bold" id="summaryTotal">$0.00</span>
+              </div>
+
+              <a href="checkout.html" class="btn btn-luxury-solid btn-luxury w-100 text-center py-3">Proceed to Checkout</a>
+              
+              <div class="text-center mt-4" style="font-size: 0.75rem; color: var(--color-text-secondary);">
+                <p class="mb-1"><i class="bi bi-shield-lock me-2"></i>Secure SSL 256-bit Encrypted Checkout</p>
+                <p class="mb-0">Fully Insured & Signature Required on Delivery</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-logo">Aurelia</div>
+                    <p class="text-muted pr-4">Refining high-luxury jewelry since 1894. Providing certified diamond rings, precious stones, and heirloom-quality craftsmanship.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a href="#" class="social-icon-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Collections</h5>
+          <ul class="footer-links">
+            <li><a href="shop-grid.html?category=engagement">Engagement Rings</a></li>
+            <li><a href="shop-grid.html?category=wedding">Wedding Bands</a></li>
+            <li><a href="shop-grid.html?category=necklaces">Precious Pendants</a></li>
+            <li><a href="shop-grid.html?category=earrings">Diamond Earrings</a></li>
+            <li><a href="shop-grid.html?category=watches">Luxury Chronographs</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Customer Care</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Book Appointment</a></li>
+            <li><a href="about.html">Heritage Story</a></li>
+            <li><a href="shop.html">Certified Diamonds</a></li>
+            <li><a href="contact.html">Boutique Locations</a></li>
+            <li><a href="contact.html">Shipping & Returns</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5>Boutique Consult</h5>
+          <p class="text-muted">A client advisor is available for virtual or private in-store styling appointments.</p>
+          <a href="contact.html" class="btn btn-luxury btn-luxury-gold w-100 text-center py-2" style="font-size: 0.75rem;">Schedule Consultation</a>
+        </div>
+      </div>
+      <hr class="my-5">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-muted" style="font-size: 0.8rem;">
+        <p class="mb-0">&copy; 2026 Aurelia Fine Jewellery. All Rights Reserved. Crafted for luxury commerce.</p>
+        <div class="d-flex gap-4 mt-3 mt-md-0">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">GIA Authenticity</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Drawer Overlay & Drawers -->
+  <div class="drawer-overlay"></div>
+
+  <!-- Search Drawer -->
+  <div class="side-drawer" id="search-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Search Collections</h5>
+      <button class="close-drawer-btn" aria-label="Close search"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <form action="shop-grid.html" method="GET">
+        <div class="input-group">
+          <input type="text" class="form-control newsletter-input" placeholder="Search diamonds, rings..." name="search" required>
+          <button class="btn btn-luxury-solid px-3" type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mini Cart Drawer -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Your Shopping Bag</h5>
+      <button class="close-drawer-btn" aria-label="Close cart"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content mini-cart-items-wrapper"></div>
+    <div class="side-drawer-footer">
+      <div class="d-flex justify-content-between mb-3">
+        <span class="text-uppercase font-pricing" style="font-size: 0.85rem;">Subtotal</span>
+        <span class="font-pricing mini-cart-total-price fw-bold">$0.00</span>
+      </div>
+      <a href="cart.html" class="btn btn-luxury w-100 mb-2 text-center d-block">View Shopping Bag</a>
+      <a href="checkout.html" class="btn btn-luxury-solid w-100 text-center d-block mini-cart-checkout-btn">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="side-drawer side-drawer-left" id="mobile-menu-drawer">
+    <div class="side-drawer-header">
+      <h5 class="side-drawer-title font-editorial">Aurelia Menu</h5>
+      <button class="close-drawer-btn" aria-label="Close mobile menu"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="side-drawer-content">
+      <ul class="nav-links flex-column gap-3 fs-5" style="display: flex;">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="shop.html" >Shop</a></li>
+        <li><a href="blog.html" >Blog</a></li>
+        <li><a href="faq.html" >FAQ</a></li>
+        <li><a href="about.html" >About Us</a></li>
+        <li><a href="contact.html" >Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    let discountRate = 0.0;
+
+    function applyPromo() {
+      const code = document.getElementById('promoInput').value.trim();
+      if (code.toUpperCase() === 'AURELIA10') {
+        discountRate = 0.1;
+        document.getElementById('promoSuccessText').classList.remove('d-none');
+        renderFullCart();
+      } else {
+        alert('Invalid promotional privilege code.');
+      }
+    }
+
+    function renderFullCart() {
+      const wrapper = document.getElementById('full-cart-items-wrapper');
+      const cartRow = document.getElementById('cart-content-row');
+      const cart = getCart();
+
+      if (cart.length === 0) {
+        cartRow.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <i class="bi bi-bag-x text-muted display-1 mb-3"></i>
+            <h3 class="font-editorial text-muted">Your shopping bag is empty.</h3>
+            <p class="text-muted mb-4">View our fine diamonds, rings, and earrings to begin crafting your luxury order.</p>
+            <a href="shop-grid.html" class="btn btn-luxury-solid btn-luxury">Return to Catalog</a>
+          </div>
+        `;
+        return;
+      }
+
+      wrapper.innerHTML = '';
+      let subtotal = 0;
+
+      cart.forEach((item, idx) => {
+        const itemPriceNum = parseFloat(item.price.replace(/[$,]/g, ''));
+        const itemSubtotal = itemPriceNum * item.quantity;
+        subtotal += itemSubtotal;
+
+        const rowHtml = `
+          <tr>
+            <td style="padding: 1.5rem 0;">
+              <div class="d-flex align-items-center">
+                <img src="${item.image}" alt="${item.title}" style="width: 80px; height: 85px; object-fit: cover; border: 1px solid var(--color-border);" class="me-4">
+                <div>
+                  <h5 class="mb-1 font-editorial fs-5"><a href="product-details.html">${item.title}</a></h5>
+                  <p class="text-muted mb-0" style="font-size: 0.8rem;">Metal: ${item.metal} | Size: ${item.size}</p>
+                  <button onclick="removeFromCart(${idx}); renderFullCart();" class="btn p-0 text-danger mt-2" style="font-size: 0.75rem;"><i class="bi bi-trash me-1"></i>Remove</button>
+                </div>
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="d-inline-flex align-items-center border">
+                <button onclick="updateCartQty(${idx}, ${item.quantity - 1})" class="btn btn-sm px-2 border-0">-</button>
+                <span class="mx-3 font-pricing" style="font-size: 0.9rem;">${item.quantity}</span>
+                <button onclick="updateCartQty(${idx}, ${item.quantity + 1})" class="btn btn-sm px-2 border-0">+</button>
+              </div>
+            </td>
+            <td class="text-end font-pricing fw-bold text-bronze" style="font-size: 1rem;">
+              $${itemSubtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </td>
+          </tr>
+        `;
+        wrapper.innerHTML += rowHtml;
+      });
+
+      // Recalculate Summary
+      const discount = subtotal * discountRate;
+      const tax = (subtotal - discount) * 0.085; // 8.5% Luxury Tax
+      const total = subtotal - discount + tax;
+
+      document.getElementById('summarySubtotal').textContent = "$" + subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      
+      const discountRow = document.getElementById('summaryDiscountRow');
+      if (discount > 0) {
+        discountRow.classList.remove('d-none');
+        document.getElementById('summaryDiscount').textContent = "-$" + discount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      } else {
+        discountRow.classList.add('d-none');
+      }
+
+      document.getElementById('summaryTax').textContent = "$" + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('summaryTotal').textContent = "$" + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    window.renderFullCart = renderFullCart;
+    document.addEventListener('DOMContentLoaded', renderFullCart);
+  </script>
+</body>
+</html>
