@@ -40,6 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
       target.classList.add('active');
       if (overlay) overlay.classList.add('active');
       document.body.style.overflow = 'hidden';
+
+      if (drawerId === 'search-drawer') {
+        const input = target.querySelector('input');
+        if (input) {
+          setTimeout(() => input.focus(), 250);
+        }
+        if (window.initSuggestedSearch) {
+          window.initSuggestedSearch();
+        }
+      }
     }
   };
 
@@ -342,4 +352,126 @@ document.addEventListener('DOMContentLoaded', () => {
   // Run initialization updates
   updateBadges();
   updateMiniCartUI();
+
+  // Initialize suggested search on startup
+  if (window.initSuggestedSearch) {
+    window.initSuggestedSearch();
+  }
 });
+
+// --- Suggested Search Engine ---
+const productsCatalog = [
+  { id: 1, title: 'Solitaire Diamond Ring', category: 'Engagement', price: '$5,800.00', image: 'assets/images/products/ring-diamond.jpg', url: 'product-details.html' },
+  { id: 2, title: 'Emerald Cut Pendant', category: 'Necklaces', price: '$3,400.00', image: 'assets/images/products/pendant-emerald.jpg', url: 'product-details.html' },
+  { id: 3, title: 'Baroque South Sea Pearl Drop Earrings', category: 'Earrings', price: '$4,200.00', image: 'assets/images/products/earrings-pearl.jpg', url: 'product-details.html' },
+  { id: 4, title: 'Royal Sapphire Halo Ring', category: 'Rings', price: '$6,900.00', image: 'assets/images/products/ring-sapphire.jpg', url: 'product-details.html' },
+  { id: 5, title: 'Classic Diamond Tennis Bracelet', category: 'Bracelets', price: '$8,500.00', image: 'assets/images/products/bracelet-tennis.jpg', url: 'product-details.html' },
+  { id: 6, title: 'Handcrafted Gold Eternity Band', category: 'Wedding', price: '$2,100.00', image: 'assets/images/products/bands-wedding.jpg', url: 'product-details.html' },
+  { id: 7, title: '18K Rose Gold Chronograph', category: 'Watches', price: '$12,400.00', image: 'assets/images/products/watch-gold.jpg', url: 'product-details.html' },
+  { id: 8, title: 'Solid Gold Wheat Chain', category: 'Necklaces', price: '$1,850.00', image: 'assets/images/products/necklace-gold.jpg', url: 'product-details.html' }
+];
+
+window.initSuggestedSearch = function() {
+  const searchDrawer = document.getElementById('search-drawer');
+  if (!searchDrawer) return;
+
+  const searchInput = searchDrawer.querySelector('input[name="search"]') || searchDrawer.querySelector('input');
+  const contentArea = searchDrawer.querySelector('.side-drawer-content');
+  if (!searchInput || !contentArea) return;
+
+  let suggestWrapper = searchDrawer.querySelector('.suggested-search-results');
+  if (!suggestWrapper) {
+    suggestWrapper = document.createElement('div');
+    suggestWrapper.className = 'suggested-search-results mt-4';
+    contentArea.appendChild(suggestWrapper);
+  }
+
+  // Remove duplicate legacy list if present
+  const oldSuggested = contentArea.querySelector('.mt-4:not(.suggested-search-results)');
+  if (oldSuggested) {
+    oldSuggested.style.display = 'none';
+  }
+
+  function renderDefaultSuggestions() {
+    suggestWrapper.innerHTML = `
+      <div class="suggested-tags-section mb-4">
+        <h6 class="text-muted text-uppercase font-pricing mb-3" style="font-size: 0.75rem; letter-spacing: 0.1em;">Popular Search Terms</h6>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <a href="shop-grid.html?search=Diamond" class="search-tag-pill">Diamond Rings</a>
+          <a href="shop-grid.html?search=Pearl" class="search-tag-pill">Baroque Pearls</a>
+          <a href="shop-grid.html?search=Emerald" class="search-tag-pill">Emerald Pendants</a>
+          <a href="shop-grid.html?search=Solitaire" class="search-tag-pill">Solitaire Cut</a>
+          <a href="shop-grid.html?search=Gold" class="search-tag-pill">18K Gold</a>
+          <a href="shop-grid.html?search=Watch" class="search-tag-pill">Luxury Watches</a>
+        </div>
+      </div>
+
+      <div class="trending-suggested-section">
+        <h6 class="text-muted text-uppercase font-pricing mb-3" style="font-size: 0.75rem; letter-spacing: 0.1em;">Trending Collections</h6>
+        <div class="suggested-products-list">
+          ${productsCatalog.slice(0, 4).map(item => `
+            <a href="${item.url}" class="suggested-product-item d-flex align-items-center mb-3 text-decoration-none">
+              <img src="${item.image}" alt="${item.title}" class="rounded me-3" style="width: 52px; height: 52px; object-fit: cover; border: 1px solid rgba(0,0,0,0.08);">
+              <div>
+                <span class="text-muted text-uppercase d-block" style="font-size: 0.65rem; letter-spacing: 0.08em;">${item.category}</span>
+                <h6 class="mb-1 font-editorial text-dark" style="font-size: 0.95rem;">${item.title}</h6>
+                <span class="text-gold font-pricing" style="font-size: 0.8rem;">${item.price}</span>
+              </div>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderFilteredResults(query) {
+    const q = query.toLowerCase().trim();
+    if (!q) {
+      renderDefaultSuggestions();
+      return;
+    }
+
+    const matches = productsCatalog.filter(item => 
+      item.title.toLowerCase().includes(q) || 
+      item.category.toLowerCase().includes(q)
+    );
+
+    if (matches.length === 0) {
+      suggestWrapper.innerHTML = `
+        <div class="py-4 text-center text-muted">
+          <i class="bi bi-search fs-3 mb-2 d-block opacity-50"></i>
+          <p style="font-size: 0.9rem;">No matching pieces found for "${query}".</p>
+          <span style="font-size: 0.8rem;">Try searching for "Diamond", "Pearl", "Emerald", or "Ring".</span>
+        </div>
+      `;
+      return;
+    }
+
+    suggestWrapper.innerHTML = `
+      <h6 class="text-muted text-uppercase font-pricing mb-3" style="font-size: 0.75rem; letter-spacing: 0.1em;">Matching Suggestions (${matches.length})</h6>
+      <div class="suggested-products-list">
+        ${matches.map(item => `
+          <a href="${item.url}" class="suggested-product-item d-flex align-items-center mb-3 text-decoration-none">
+            <img src="${item.image}" alt="${item.title}" class="rounded me-3" style="width: 52px; height: 52px; object-fit: cover; border: 1px solid rgba(0,0,0,0.08);">
+            <div>
+              <span class="text-muted text-uppercase d-block" style="font-size: 0.65rem; letter-spacing: 0.08em;">${item.category}</span>
+              <h6 class="mb-1 font-editorial text-dark" style="font-size: 0.95rem;">${item.title}</h6>
+              <span class="text-gold font-pricing" style="font-size: 0.8rem;">${item.price}</span>
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  // Initial render
+  renderDefaultSuggestions();
+
+  // Listen to input changes
+  if (!searchInput.dataset.suggestBound) {
+    searchInput.dataset.suggestBound = "true";
+    searchInput.addEventListener('input', (e) => {
+      renderFilteredResults(e.target.value);
+    });
+  }
+};

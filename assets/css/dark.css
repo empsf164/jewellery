@@ -108,3 +108,22 @@
 [data-theme="dark"] .breadcrumb-item::before {
   color: var(--color-text-secondary);
 }
+
+[data-theme="dark"] .search-tag-pill {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FAFAFA;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .search-tag-pill:hover {
+  background: var(--color-accent);
+  color: #0A0A0A;
+}
+
+[data-theme="dark"] .suggested-product-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .suggested-product-item h6 {
+  color: #FAFAFA !important;
+}

@@ -761,6 +761,36 @@ footer hr {
   background-color: var(--color-background);
 }
 
+/* Suggested Search Engine Styling */
+.search-tag-pill {
+  background: rgba(31, 41, 55, 0.06);
+  color: var(--color-primary);
+  border: 1px solid rgba(31, 41, 55, 0.12);
+  padding: 0.4rem 0.85rem;
+  font-weight: 500;
+  font-size: 0.78rem;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.search-tag-pill:hover {
+  background: var(--color-accent, #D4AF37);
+  color: #ffffff;
+  border-color: var(--color-accent, #D4AF37);
+}
+
+.suggested-product-item {
+  padding: 0.6rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.suggested-product-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
 /* Left Side Drawer for Mobile Menu */
 .side-drawer-left {
   left: 0;
@@ -819,8 +849,8 @@ footer hr {
 
 /* Page Hero Banner */
 .page-hero {
-  padding: 12rem 0 6rem 0;
-  background-color: #F5F3EF;
+  padding: 10rem 0 5rem 0;
+  background: linear-gradient(180deg, #F8F6F2 0%, #EFECE6 100%);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -829,7 +859,24 @@ footer hr {
 
 .page-hero h1 {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-accent-line {
+  width: 60px;
+  height: 2px;
+  background: var(--color-accent, #D4AF37);
+  margin: 1.25rem auto;
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+.hero-tagline {
+  max-width: 620px;
+  margin: 0.75rem auto 1.5rem auto;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
 }
 
 .breadcrumb {
@@ -1022,6 +1069,82 @@ footer hr {
   background-color: var(--color-surface);
 }
 
+/* Showroom Social Contact Buttons */
+.showroom-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.showroom-social-icon.whatsapp-icon:hover {
+  background: #25D366;
+  color: #ffffff;
+  border-color: #25D366;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.showroom-social-icon.instagram-icon:hover {
+  background: #E4405F;
+  color: #ffffff;
+  border-color: #E4405F;
+  box-shadow: 0 4px 12px rgba(228, 64, 95, 0.3);
+}
+
+.showroom-social-icon.email-icon:hover {
+  background: var(--color-accent, #D4AF37);
+  color: #ffffff;
+  border-color: var(--color-accent, #D4AF37);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.btn-social-channel {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem;
+  font-family: var(--font-pricing);
+  font-weight: 500;
+  border-radius: 30px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-social-channel.whatsapp-channel:hover {
+  border-color: #25D366;
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.08);
+}
+
+.btn-social-channel.instagram-channel:hover {
+  border-color: #E4405F;
+  color: #E4405F;
+  background: rgba(228, 64, 95, 0.08);
+}
+
+.btn-social-channel.pinterest-channel:hover {
+  border-color: #BD081C;
+  color: #BD081C;
+  background: rgba(189, 8, 28, 0.08);
+}
+
+.btn-social-channel.facebook-channel:hover {
+  border-color: #1877F2;
+  color: #1877F2;
+  background: rgba(24, 119, 242, 0.08);
+}
+
 /* Animations pulse ring for lookbook */
 @keyframes pulse-ring {
   0% {
@@ -1047,6 +1170,12 @@ footer hr {
 
   .hero-content h1 {
     font-size: 3rem;
+  }
+
+  .btn-luxury {
+    padding: 0.75rem 1.25rem;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
   }
 }
 
@@ -1086,6 +1215,44 @@ footer hr {
 
   .newsletter-section {
     background-attachment: scroll;
+    padding: 3rem 1rem;
+  }
+
+  .newsletter-glass {
+    padding: 2.5rem 1.25rem !important;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .newsletter-glass h2 {
+    font-size: 2rem !important;
+  }
+
+  .newsletter-input-group {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .newsletter-input-group .newsletter-input {
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+  }
+
+  .newsletter-input-group .newsletter-btn {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    border-radius: 4px;
+  }
+
+  .display-4 {
+    font-size: 2.2rem !important;
+  }
+
+  .display-5 {
+    font-size: 1.9rem !important;
   }
 }
 
@@ -1118,5 +1285,13 @@ footer hr {
 
   .page-hero h1 {
     font-size: 2.2rem;
+  }
+
+  .newsletter-glass {
+    padding: 2rem 1rem !important;
+  }
+
+  .newsletter-glass h2 {
+    font-size: 1.65rem !important;
   }
 }
